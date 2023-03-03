@@ -1,6 +1,7 @@
 #include<iostream>
 #include<time.h>
 #include "checking_account.h"
+#include "atm.h"
 
 using std::cout;
 
@@ -9,10 +10,13 @@ int main()
 	srand(time(NULL));//generate true randoms on each main run execution
 
 	CheckingAccount account;//cust 1
-	cout<<"Balance: "<<account.get_balance()<<"\n";
+	cout<<account;
+	cout<<account.get_balance()<<"\n";
+	show_balance(account);//use the friend free function
 
-	CheckingAccount account1(100);//cust 2
-	cout<<"Balance: "<<account1.get_balance()<<"\n";
+	//run_menu(account);
+
+	cout<<account.get_balance()<<"\n";
 
 	return 0;
 }
