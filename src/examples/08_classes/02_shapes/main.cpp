@@ -13,21 +13,16 @@ iterate with auto
 
 int main() 
 {
-	Shape shape;
-	shape.draw();
+	Shape* shape;//create dynamic memory
 
-	Line line;
-	line.draw();
+	shape = new Line();//create dynamic memory
+	shape->draw();
+	delete shape;
 
-	Circle circle;
-	circle.draw();
+	shape = new Circle();
+	shape->draw();
+	delete shape;
 
-	Shape* shape_ptr;
-	shape_ptr = &line;
-	shape_ptr->draw();
-
-	shape_ptr = &circle;
-	shape_ptr->draw();
 
 	return 0;
 }
