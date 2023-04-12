@@ -5,9 +5,9 @@ using std::cout;
 
 int main() 
 {
-	int* num_ptr = new int(5);
-
-	cout<<*num_ptr<<"\n";
+	memory_leak();
+	//more code
+	//more code	
 	
 	return 0;
 }
