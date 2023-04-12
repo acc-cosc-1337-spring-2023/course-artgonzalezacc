@@ -5,12 +5,8 @@ using std::cout;
 
 int main() 
 {
-	int* nums = new int[3]{};
-	cout<<nums[0]<<"\n";
-	nums[0] = 5;
-	cout<<nums[0]<<"\n";
-
-	delete nums;
+	//use_dynamic_memory_array(3);
+	limit_dynamic_memory_scope(3);
 
 	return 0;
 }
