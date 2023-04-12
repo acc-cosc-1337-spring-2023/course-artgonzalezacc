@@ -1,12 +1,13 @@
 #include "memory_leak.h"
+#include<iostream>
+
+using std::cout;
 
 int main() 
 {
-	//call function 1 time
-	
+	int* num_ptr = new int(5);
 
-	//call function in a loop
-	
+	cout<<*num_ptr<<"\n";
 	
 	return 0;
 }
