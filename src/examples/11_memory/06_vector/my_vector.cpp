@@ -17,6 +17,8 @@ Vector::~Vector()
 //NOT A CLASS FUNCTION; FREE FUNCTIONS
 void use_vector()
 {
-    Vector v(3);
+    //DO NOT USE DYNAMIC MEMORY FOR THE MY VECTOR CLASS
+    Vector* v = new Vector(3);
+    delete v;//if this is not called delete[] elements not called in my Vector MEMORY LEAK!!
 }
 
