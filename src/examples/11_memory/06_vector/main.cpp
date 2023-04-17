@@ -3,8 +3,8 @@
 
 int main()
 {
-    Vector v(3);
-    
+    use_vector();    
+    use_vector();
 
     return 0;
 }

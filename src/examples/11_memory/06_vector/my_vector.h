@@ -19,3 +19,5 @@ private:
 };
 
 #endif
+
+void use_vector();

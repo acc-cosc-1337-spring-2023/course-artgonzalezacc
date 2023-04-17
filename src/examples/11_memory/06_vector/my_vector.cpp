@@ -14,3 +14,9 @@ Vector::~Vector()
     delete[] elements;
 }
 
+//NOT A CLASS FUNCTION; FREE FUNCTIONS
+void use_vector()
+{
+    Vector v(3);
+}
+
