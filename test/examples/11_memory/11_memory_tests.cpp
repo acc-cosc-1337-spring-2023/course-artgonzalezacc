@@ -20,7 +20,13 @@ TEST_CASE("Test ref ptr params function")
 TEST_CASE("Test my vector size")
 {
 	Vector v(3);
-	REQUIRE(v.Size() == 3);
+	REQUIRE(v.Size() == 0);
+}
+
+TEST_CASE("Test my vector capacity")
+{
+	Vector v(3);
+	REQUIRE(v.Capacity() == 3);
 }
 
 TEST_CASE("Test my vector overloaded[] ")
@@ -29,4 +35,12 @@ TEST_CASE("Test my vector overloaded[] ")
 	v[0] = 5;
 
 	REQUIRE(v[0] == 5);
+}
+
+TEST_CASE("Test my vector class copy")
+{
+	Vector v(3);
+	Vector v1 = v;
+
+	REQUIRE(v.Size() == v1.Size());
 }

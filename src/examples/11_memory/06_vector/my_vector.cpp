@@ -3,9 +3,19 @@
 using std::cout;
 //
 Vector::Vector(int s)
-    : size{s}, capacity{s}, elements{new int[s]}
+    : capacity{s}, elements{new int[s]}
 {
     cout<<"new memory created at "<<elements<<"\n";
+}
+
+Vector::Vector(const Vector& v)
+  : size{v.size}, capacity{v.capacity}, elements{new int[v.size]}
+{
+    cout<<"Copy constructor - created memory at "<<elements<<"\n";
+    for(auto i=0; i < v.size; i++)
+    {
+        elements[i] = v.elements[i];
+    }
 }
 
 Vector::~Vector()
@@ -17,8 +27,7 @@ Vector::~Vector()
 //NOT A CLASS FUNCTION; FREE FUNCTIONS
 void use_vector()
 {
-    //DO NOT USE DYNAMIC MEMORY FOR THE MY VECTOR CLASS
-    Vector* v = new Vector(3);
-    delete v;//if this is not called delete[] elements not called in my Vector MEMORY LEAK!!
+    Vector v(3);//calls constructor with int parameter
+    Vector v1 = v;//calls copy constructor
 }
 
