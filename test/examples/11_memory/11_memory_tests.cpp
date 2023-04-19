@@ -44,3 +44,10 @@ TEST_CASE("Test my vector class copy")
 
 	REQUIRE(v.Size() == v1.Size());
 }
+
+TEST_CASE("Test my vector create 2 vectors overwrite v1 with v")
+{
+	Vector v(3);
+	Vector v1(3);
+	v1 = v;//assignment operation //overload the = operator
+}
