@@ -10,6 +10,7 @@ public:
     Vector(int size);
     Vector(const Vector& v);//copy constructor Rule 1 Rule of 3(legacy C++)
     Vector& operator=(const Vector& v);//copy assignment Rule 2 of 3
+    Vector(Vector&& v);//move constructor Rule 4 of 5 in modern C++ programming
     int Size(){return size;}
     int Capacity(){return capacity;}
     int& operator[](int index){return  elements[index];}

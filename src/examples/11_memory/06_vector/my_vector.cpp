@@ -46,6 +46,20 @@ Vector& Vector::operator=(const Vector& v){
     return *this;//returns a reference to itself
 }
 
+/*
+1-Get v.elements memory(steal the pointer/guts)
+2-Get size frm v
+3-point v.elements to nothing(nullptr)
+4-set v size to 0
+*/
+Vector::Vector(Vector&& v)
+ : size{v.size}, elements{v.elements}
+{
+    cout<<"Move constructor switched pointer "<<elements<<"\n";
+    v.elements = nullptr;
+    v.size = 0;
+}
+
 Vector::~Vector()
 {
     cout<<"delete memory at"<<elements<<"\n";
