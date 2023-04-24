@@ -60,6 +60,30 @@ Vector::Vector(Vector&& v)
     v.size = 0;
 }
 
+/*
+1-clear/delete original dynamic memory from v
+2-point elements(v1) to v.elements
+3-get size from v
+4-point v.elements to nullptr
+5-set v.size to 0
+6-return a self reference
+*/
+Vector& Vector::operator=(Vector&& v)
+{
+    cout<<"Move assignment delete memory "<<elements<<"\n";
+    delete[] elements;
+
+    elements = v.elements;
+
+    cout<<"Move assignment switch pointers "<<elements<<"\n";
+
+    size = v.size;
+    v.elements = nullptr;
+    v.size = 0;
+
+    return *this;
+}
+
 Vector::~Vector()
 {
     cout<<"delete memory at"<<elements<<"\n";
@@ -73,3 +97,8 @@ void use_vector()
     Vector v1 = v;//calls copy constructor
 }
 
+Vector get_vector()
+{
+    Vector v1(3); 
+    return v1;
+}

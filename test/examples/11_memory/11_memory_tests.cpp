@@ -2,7 +2,7 @@
 #include "catch.hpp"
 #include "ref_pointers.h"
 #include "my_vector.h"
-
+/*
 TEST_CASE("Verify Test Configuration", "verification") {
 	REQUIRE(true == true);
 }
@@ -55,4 +55,10 @@ TEST_CASE("Test my vector create 2 vectors overwrite v1 with v")
 TEST_CASE("Test overwrite vector with std move function"){
 	Vector v(3);
 	Vector v1 = std::move(v);
+}
+*/
+TEST_CASE("Test overwrite v with a value return from a function ")
+{
+	Vector v(3);
+	v = get_vector();
 }
