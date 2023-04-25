@@ -84,6 +84,60 @@ Vector& Vector::operator=(Vector&& v)
     return *this;
 }
 
+/*
+1-make sure new size is greater than capacity
+2-create temp memory of size allocation
+3-copy values from old memory to temp memory
+4-delete the old memory
+5-set elements to temp memory
+6-set capacity to new allocation size
+*/
+void Vector::Reserve(int new_size)
+{   
+    if(new_size <= capacity)
+    {
+        return;
+    }
+
+    int* temp = new int[new_size];
+    cout<<"Reserve new memory "<<temp<<"\n";
+
+    for(auto i=0; i < size; i++)
+    {
+        temp[i] = elements[i];
+    }
+
+    cout<<"Delete old memory "<<elements<<"\n";
+    delete[] elements;
+
+    elements = temp;
+    
+    capacity = new_size;
+}
+
+/*
+1-if capacity is 0 call reserve w reserve_default size
+2-else if size is equal to capacity Reserve w capacity * reserve_default_multiplier
+3-current elements at size (index) ex: elements[size] =  value--- to value
+4-increment the size
+*/
+void Vector::PushBack(int value)
+{
+
+    if(capacity == 0)
+    {
+        Reserve(RESERVE_DEFAULT_SIZE);
+    }
+    else if(capacity == size)
+    {
+        Reserve(capacity * RESERVE_DEFAULT_MULTIPLIER);
+    }
+
+    elements[size] = value;
+
+    size++;
+}
+
 Vector::~Vector()
 {
     cout<<"delete memory at"<<elements<<"\n";

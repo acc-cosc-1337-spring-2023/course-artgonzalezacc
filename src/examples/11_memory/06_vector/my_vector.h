@@ -14,13 +14,18 @@ public:
     Vector& operator=(Vector&& v);//move assignment Rule 5 of 5 in modern C++
     int Size(){return size;}
     int Capacity(){return capacity;}
+    void PushBack(int value);
     int& operator[](int index){return  elements[index];}
     int& operator[](int index)const{return elements[index];}
     ~Vector();//destructor Rule 3 of 3 in legacy C++
 private:
-    int* elements;
     int size{0};
     int capacity;
+    int* elements;
+    const int RESERVE_DEFAULT_SIZE{8};
+    const int RESERVE_DEFAULT_MULTIPLIER{2};
+    void Reserve(int new_size);
+
 };
 
 #endif
