@@ -7,6 +7,7 @@
 class Vector
 {
 public:
+    Vector() = default;
     Vector(int size);
     Vector(const Vector& v);//copy constructor Rule 1 Rule of 3(legacy C++)
     Vector& operator=(const Vector& v);//copy assignment Rule 2 of 3
@@ -20,7 +21,7 @@ public:
     ~Vector();//destructor Rule 3 of 3 in legacy C++
 private:
     int size{0};
-    int capacity;
+    int capacity{0};
     int* elements;
     const int RESERVE_DEFAULT_SIZE{8};
     const int RESERVE_DEFAULT_MULTIPLIER{2};

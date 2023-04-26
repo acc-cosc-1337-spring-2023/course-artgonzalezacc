@@ -65,7 +65,7 @@ TEST_CASE("Test overwrite v with a value return from a function ")
 */
 
 TEST_CASE("Test pushback to list with no elements capacity 3")
-{
+{   
 	Vector v(3);
 	v.PushBack(5);
 
@@ -88,4 +88,17 @@ TEST_CASE("Test pushback to list with no elements capacity 3")
 	REQUIRE(v.Size() == 4);
 	REQUIRE(v[3] == 100);
 
+}
+
+TEST_CASE("Test pushback to list with capacity 0")
+{
+	Vector v;
+
+	REQUIRE(v.Size() == 0);
+	REQUIRE(v.Capacity() == 0);
+
+	v.PushBack(5);
+	REQUIRE(v.Size() == 1);
+	REQUIRE(v.Capacity() == 8);
+	REQUIRE(v[0] == 5);
 }

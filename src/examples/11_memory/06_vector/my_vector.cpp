@@ -100,14 +100,14 @@ void Vector::Reserve(int new_size)
     }
 
     int* temp = new int[new_size];
-    cout<<"Reserve new memory "<<temp<<"\n";
+    cout<<"Reserve - new memory "<<temp<<"\n";
 
     for(auto i=0; i < size; i++)
     {
         temp[i] = elements[i];
     }
 
-    cout<<"Delete old memory "<<elements<<"\n";
+    cout<<"Reserve - Delete old memory "<<elements<<"\n";
     delete[] elements;
 
     elements = temp;
