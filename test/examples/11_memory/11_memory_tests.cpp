@@ -2,7 +2,7 @@
 #include "catch.hpp"
 #include "ref_pointers.h"
 #include "my_vector.h"
-/*
+
 TEST_CASE("Verify Test Configuration", "verification") {
 	REQUIRE(true == true);
 }
@@ -19,19 +19,19 @@ TEST_CASE("Test ref ptr params function")
 
 TEST_CASE("Test my vector size")
 {
-	Vector v(3);
+	Vector<int> v(3);
 	REQUIRE(v.Size() == 0);
 }
 
 TEST_CASE("Test my vector capacity")
 {
-	Vector v(3);
+	Vector<int> v(3);
 	REQUIRE(v.Capacity() == 3);
 }
 
 TEST_CASE("Test my vector overloaded[] ")
 {
-	Vector v(3);
+	Vector<int> v(3);
 	v[0] = 5;
 
 	REQUIRE(v[0] == 5);
@@ -39,34 +39,34 @@ TEST_CASE("Test my vector overloaded[] ")
 
 TEST_CASE("Test my vector class copy")
 {
-	Vector v(3);
-	Vector v1 = v;
+	Vector<int> v(3);
+	Vector<int> v1 = v;
 
 	REQUIRE(v.Size() == v1.Size());
 }
 
 TEST_CASE("Test my vector create 2 vectors overwrite v1 with v")
 {
-	Vector v(3);
-	Vector v1(3);
+	Vector<int> v(3);
+	Vector<int> v1(3);
 	v1 = v;//assignment operation //overload the = operator
 }
 
 TEST_CASE("Test overwrite vector with std move function"){
-	Vector v(3);
+	Vector<int> v(3);
 	Vector v1 = std::move(v);
 }
 
 TEST_CASE("Test overwrite v with a value return from a function ")
 {
-	Vector v(3);
+	Vector<int> v(3);
 	v = get_vector();
 }
-*/
+
 
 TEST_CASE("Test pushback to list with no elements capacity 3")
 {   
-	Vector v(3);
+	Vector<int> v(3);
 	v.PushBack(5);
 
 	REQUIRE(v.Capacity() == 3);
@@ -92,7 +92,7 @@ TEST_CASE("Test pushback to list with no elements capacity 3")
 
 TEST_CASE("Test pushback to list with capacity 0")
 {
-	Vector v;
+	Vector<int> v;
 
 	REQUIRE(v.Size() == 0);
 	REQUIRE(v.Capacity() == 0);

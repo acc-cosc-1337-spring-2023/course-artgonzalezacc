@@ -2,14 +2,16 @@
 
 using std::cout;
 //
-Vector::Vector(int s)
-    : capacity{s}, elements{new int[s]}
+template<typename T>
+Vector<T>::Vector(int s)
+    : capacity{s}, elements{new T[s]}
 {
     cout<<"new memory created at "<<elements<<"\n";
 }
 
-Vector::Vector(const Vector& v)
-  : size{v.size}, capacity{v.capacity}, elements{new int[v.size]}
+template<typename T>
+Vector<T>::Vector(const Vector& v)
+  : size{v.size}, capacity{v.capacity}, elements{new T[v.size]}
 {
     cout<<"Copy constructor - created memory at "<<elements<<"\n";
     for(auto i=0; i < v.size; i++)
@@ -26,8 +28,9 @@ Vector::Vector(const Vector& v)
 5-Set v1 size to v.size
 6-Return a reference to vector using (this)
 */
-Vector& Vector::operator=(const Vector& v){
-    int* temp = new int[v.size];
+template<typename T>
+Vector<T>& Vector<T>::operator=(const Vector<T>& v){
+    T* temp = new T[v.size];
 
     for(auto i=0; i < v.size; i++)
     {
@@ -52,7 +55,8 @@ Vector& Vector::operator=(const Vector& v){
 3-point v.elements to nothing(nullptr)
 4-set v size to 0
 */
-Vector::Vector(Vector&& v)
+template<typename T>
+Vector<T>::Vector(Vector<T>&& v)
  : size{v.size}, elements{v.elements}
 {
     cout<<"Move constructor switched pointer "<<elements<<"\n";
@@ -68,7 +72,8 @@ Vector::Vector(Vector&& v)
 5-set v.size to 0
 6-return a self reference
 */
-Vector& Vector::operator=(Vector&& v)
+template<typename T>
+Vector<T>& Vector<T>::operator=(Vector<T>&& v)
 {
     cout<<"Move assignment delete memory "<<elements<<"\n";
     delete[] elements;
@@ -92,14 +97,15 @@ Vector& Vector::operator=(Vector&& v)
 5-set elements to temp memory
 6-set capacity to new allocation size
 */
-void Vector::Reserve(int new_size)
+template<typename T>
+void Vector<T>::Reserve(int new_size)
 {   
-    if(new_size <= capacity)
+    if(new_size < capacity)
     {
         return;
     }
 
-    int* temp = new int[new_size];
+    T* temp = new T[new_size];
     cout<<"Reserve - new memory "<<temp<<"\n";
 
     for(auto i=0; i < size; i++)
@@ -121,7 +127,8 @@ void Vector::Reserve(int new_size)
 3-current elements at size (index) ex: elements[size] =  value--- to value
 4-increment the size
 */
-void Vector::PushBack(int value)
+template<typename T>
+void Vector<T>::PushBack(T value)
 {
 
     if(capacity == 0)
@@ -138,7 +145,8 @@ void Vector::PushBack(int value)
     size++;
 }
 
-Vector::~Vector()
+template<typename T>
+Vector<T>::~Vector()
 {
     cout<<"delete memory at"<<elements<<"\n";
     delete[] elements;
@@ -147,12 +155,17 @@ Vector::~Vector()
 //NOT A CLASS FUNCTION; FREE FUNCTIONS
 void use_vector()
 {
-    Vector v(3);//calls constructor with int parameter
-    Vector v1 = v;//calls copy constructor
+    Vector<int> v(3);//calls constructor with int parameter
+    Vector<int> v1 = v;//calls copy constructor
 }
 
-Vector get_vector()
+Vector<int> get_vector()
 {
-    Vector v1(3); 
+    Vector<int> v1(3); 
     return v1;
 }
+
+//Tell C++ what data type this template will support
+template class Vector<int>;
+template class Vector<double>;
+template class Vector<char>;
